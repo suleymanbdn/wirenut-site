@@ -394,6 +394,20 @@ footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px
     })();
   }
 
+  // Tally's embed script exposes openPopup but does not wire buttons itself,
+  // so the CTA is bound here. If the script is blocked or slow, the click
+  // still goes somewhere useful instead of doing nothing.
+  var cta = document.querySelector('[data-tally-open]');
+  if (cta){
+    cta.addEventListener('click', function(){
+      var id = cta.getAttribute('data-tally-open');
+      if (window.Tally && window.Tally.openPopup){
+        window.Tally.openPopup(id, {layout: 'modal', width: 460});
+      } else {
+        window.location.href = 'https://tally.so/r/' + id;
+      }
+    });
+  }
 })();
 </script>
 <script async src="https://tally.so/widgets/embed.js"></script>
