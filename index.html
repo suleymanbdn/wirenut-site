@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wirenut — a plain-language index to the NEC</title>
+<meta name="description" content="Type it the way you'd say it on a job and get the NEC article number. Free while you wait: which NEC edition your state actually enforces, with sources.">
+<meta name="theme-color" content="#101315">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23101315'/><path d='M9 10l3.4 12h1.6L16 14l2 8h1.6L23 10' stroke='%23E89B2C' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<meta property="og:title" content="Wirenut — a plain-language index to the NEC">
+<meta property="og:description" content="Say it how you'd say it on the job. Get the article number. iOS, October 2026.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101315;
+  --surface:#141719;
+  --raised:#181c1e;
+  --line:#2e3437;
+  --line-soft:#22282a;
+  --text:#eef1f2;
+  --dim:#8b9296;
+  --faint:#6c7477;
+  --amber:#e89b2c;
+  --amber-dim:#c9832234;
+  --green:#4fa671;
+  --display:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --pad:clamp(20px,5vw,64px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--text);
+  font-family:var(--body);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+::selection{background:var(--amber);color:var(--ink)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 var(--pad)}
+.label{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--ink) 88%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none}
+.mark svg{display:block}
+.mark b{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:17px}
+.nav a.quiet{
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+  color:var(--dim);text-decoration:none;text-transform:uppercase;
+  transition:color .2s var(--ease);
+}
+.nav a.quiet:hover{color:var(--text)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(56px,10vw,120px) 0 clamp(40px,7vw,80px);position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:-40% 0 auto -10%;height:120%;
+  background:radial-gradient(46% 40% at 26% 30%,#e89b2c1f,transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{position:relative;display:grid;gap:clamp(26px,4vw,44px) clamp(32px,5vw,56px)}
+.hero-grid > *{min-width:0}
+/* Narrow: copy, then the signup card, then the demo — the form must be
+   reachable before the proof, because signups are what this page is for. */
+@media(min-width:940px){
+  .hero-grid{grid-template-columns:1.05fr .95fr;align-items:start}
+  .hero-copy{grid-column:1;grid-row:1}
+  .hero-grid .demo{grid-column:1;grid-row:2;margin-top:0}
+  .hero-grid .card{grid-column:2;grid-row:1/span 2;align-self:start}
+}
+h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(38px,6.4vw,68px);line-height:1.03;letter-spacing:-.035em;
+  margin:18px 0 0;text-wrap:balance;
+}
+h1 em{font-style:normal;color:var(--amber)}
+.lede{color:var(--dim);font-size:clamp(16px,1.9vw,19px);max-width:46ch;margin:22px 0 0}
+.lede strong{color:var(--text);font-weight:500}
+
+/* search demo — the signature */
+.demo{border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.demo-bar{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line-soft)}
+.demo-bar svg{flex:none;color:var(--faint)}
+.demo-q{font-size:15px;color:var(--text);min-height:1.4em}
+.demo-q .caret{display:none;width:1px;height:1.05em;background:var(--amber);vertical-align:-.15em;margin-left:1px}
+.js .demo-q .caret{display:inline-block;animation:blink 1.1s steps(1,end) infinite}
+@keyframes blink{50%{opacity:0}}
+.demo-out{padding:16px;display:grid;gap:12px}
+.hit{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:10px;background:var(--raised)}
+.hit .num{font-family:var(--mono);font-weight:500;font-size:clamp(16px,4.4vw,19px);letter-spacing:-.01em;font-variant-numeric:tabular-nums;flex:none}
+.hit .txt{color:var(--dim);font-size:14px;line-height:1.45;flex:1 1 130px;min-width:0}
+.hit .yr{margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:3px 8px;flex:none;align-self:center}
+.js .hit{opacity:0;transform:translateY(6px)}
+.js .hit.in{opacity:1;transform:none;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+
+/* ---------- signup card ---------- */
+.card{
+  border:1px solid var(--line);border-radius:16px;background:var(--surface);
+  padding:clamp(22px,3.4vw,32px);position:relative;
+}
+.card::before{
+  content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;
+  background:var(--amber);border-radius:0 3px 3px 0;
+}
+.card h2{font-family:var(--display);font-weight:700;font-size:clamp(21px,2.6vw,26px);line-height:1.2;letter-spacing:-.02em;margin:14px 0 0}
+.card p{color:var(--dim);font-size:15px;margin:12px 0 0}
+.chart-rows{margin:22px 0 0;border-top:1px solid var(--line-soft)}
+.chart-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+.chart-row .st{font-family:var(--mono);font-size:12px;color:var(--dim);width:98px;flex:none;letter-spacing:.02em}
+@media(max-width:380px){.chart-row .bar{display:none}}
+.chart-row .ed{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;color:var(--text)}
+.chart-row .bar{margin-left:auto;height:3px;border-radius:2px;background:var(--line);flex:none}
+.cta{margin:24px 0 0}
+.cta button,.cta-link{
+  display:block;width:100%;text-align:center;
+  padding:15px 22px;border-radius:10px;border:1px solid var(--amber);
+  background:var(--amber);color:var(--ink);text-decoration:none;
+  font-family:var(--body);font-weight:500;font-size:16px;cursor:pointer;
+  transition:filter .2s var(--ease),transform .12s var(--ease);
+}
+.cta button:hover,.cta-link:hover{filter:brightness(1.08)}
+.cta button:active{transform:translateY(1px)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.fineprint{color:var(--faint);font-size:12.5px;margin:12px 0 0;line-height:1.5}
+
+/* ---------- sections ---------- */
+section{padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--line-soft)}
+.sec-head{max-width:60ch}
+.sec-head h2{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(26px,3.6vw,40px);line-height:1.12;letter-spacing:-.028em;margin:14px 0 0;
+}
+.sec-head p{color:var(--dim);margin:16px 0 0;font-size:clamp(15px,1.7vw,17px)}
+
+.feat{display:grid;gap:1px;margin-top:44px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+@media(min-width:800px){.feat{grid-template-columns:repeat(3,1fr)}}
+.feat > div{background:var(--surface);padding:clamp(22px,3vw,30px)}
+.feat h3{font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:-.01em;margin:16px 0 0}
+.feat p{color:var(--dim);font-size:14.5px;margin:10px 0 0}
+.feat .icon{color:var(--amber);display:block}
+
+/* honesty band */
+.band{background:var(--surface);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);position:relative}
+.band::before{
+  content:"";position:absolute;top:-1px;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,#e89b2c99 28%,#e89b2c99 72%,transparent);
+}
+.band .wrap{padding-top:clamp(52px,7vw,88px);padding-bottom:clamp(52px,7vw,88px)}
+.band blockquote{
+  margin:0;font-family:var(--display);font-weight:500;
+  font-size:clamp(22px,3.4vw,34px);line-height:1.28;letter-spacing:-.022em;
+  max-width:22ch;
+}
+.band .side{color:var(--dim);font-size:15.5px;max-width:44ch}
+.band-grid{display:grid;gap:clamp(24px,4vw,56px)}
+@media(min-width:860px){.band-grid{grid-template-columns:1fr 1fr;align-items:center}}
+
+/* faq */
+.faq{margin-top:40px;border-top:1px solid var(--line-soft)}
+details{border-bottom:1px solid var(--line-soft)}
+summary{
+  cursor:pointer;list-style:none;padding:19px 0;
+  font-family:var(--display);font-weight:500;font-size:17px;letter-spacing:-.01em;
+  display:flex;align-items:center;gap:14px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"";margin-left:auto;width:9px;height:9px;flex:none;
+  border-right:1.5px solid var(--faint);border-bottom:1.5px solid var(--faint);
+  transform:rotate(45deg) translateY(-2px);transition:transform .25s var(--ease);
+}
+details[open] summary::after{transform:rotate(225deg) translateY(-2px)}
+details p{color:var(--dim);margin:0 0 20px;font-size:15px;max-width:64ch}
+
+/* footer */
+footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px;overflow:hidden}
+.foot-mark{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(52px,13.5vw,164px);line-height:.82;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1px #2e3437;
+  margin:0 0 clamp(28px,4vw,44px);user-select:none;
+}
+.foot-grid{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:flex-start;justify-content:space-between}
+.disclaimer{color:var(--faint);font-size:12.5px;line-height:1.6;max-width:56ch}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s var(--ease)}
+.foot-links a:hover{color:var(--text)}
+
+/* reveal — opt-in, never hides content without JS */
+.js .rv{opacity:0;transform:translateY(14px)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .js .rv,.js .hit{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');document.body.classList.add('js')</script>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="mark" href="#top">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#181c1e"/><path d="M9 10l3.4 12h1.6L16 14l2 8h1.6L23 10" stroke="#E89B2C" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <b>Wirenut</b>
+    </a>
+    <a class="quiet" href="privacy.html">Privacy</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="label">NEC article index · iOS · October 2026</p>
+      <h1>Say it how you'd say it.<br>Get the <em>article</em>.</h1>
+      <p class="lede">Wirenut is a plain-language index to the National Electrical Code. Type it the way you'd ask a foreman — <strong>"how many wires in a box"</strong> — and the article number comes back in one line, big enough to read at arm's length.</p>
+    </div>
+
+    <div class="card" id="waitlist">
+      <p class="label">Free — sent when it's ready</p>
+      <h2>NEC edition by state, 2026</h2>
+      <p>One page. Which edition your state actually enforces right now, when it took effect, and a source link for every line — so you can check it yourself.</p>
+      <p>Most charts online are copies of one stale list. Texas moved to the 2026 code on September 1; every roundup we found still has it on 2023.</p>
+
+      <div class="chart-rows" aria-hidden="true">
+        <div class="chart-row"><span class="st">Texas</span><span class="ed">NEC 2026</span><span class="bar" style="width:56px;background:#e89b2c"></span></div>
+        <div class="chart-row"><span class="st">Pennsylvania</span><span class="ed">NEC 2020</span><span class="bar" style="width:30px"></span></div>
+        <div class="chart-row"><span class="st">Arizona</span><span class="ed">local adoption</span><span class="bar" style="width:18px"></span></div>
+      </div>
+
+      <div class="cta">
+        <button type="button" data-tally-open="D48BQ5" data-tally-layout="modal" data-tally-width="460" data-tally-emoji-text="⚡" data-tally-emoji-animation="none">Send me the chart</button>
+        <noscript><a class="cta-link" href="https://tally.so/r/D48BQ5">Send me the chart →</a></noscript>
+      </div>
+      <p class="fineprint">You'll also be first to know when Wirenut ships on iOS. Two emails, maybe three. Unsubscribe in one click.</p>
+    </div>
+
+    <div class="demo" aria-label="Example search">
+      <div class="demo-bar">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="4.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 10.6L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span class="demo-q" id="q">how many wires in a box<i class="caret"></i></span>
+      </div>
+      <div class="demo-out">
+        <div class="hit">
+          <span class="num">314.16(A)</span>
+          <span class="txt">Box fill — volume required per conductor</span>
+          <span class="yr">NEC 2023</span>
+        </div>
+        <div class="hit">
+          <span class="num">314.16(B)</span>
+          <span class="txt">What counts as a conductor: devices, clamps, grounds</span>
+          <span class="yr">NEC 2023</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="label">What it does</p>
+      <h2>Three things, done properly.</h2>
+      <p>No account, no subscription, no signal required. Wirenut works in a basement with the phone in airplane mode.</p>
+    </div>
+
+    <div class="feat rv">
+      <div>
+        <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <h3>Lookup</h3>
+        <p>Plain-language search across the index. The article number is the hero — no wall of text to hunt through. Every result says which NEC edition it was written against.</p>
+      </div>
+      <div>
+        <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M12 9v4l2.5 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 2.5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <h3>Code Hunt</h3>
+        <p>The journeyman exam is open book. The hard part isn't knowing the answer — it's reaching the right article under time pressure. Code Hunt times you, and keeps the ones you miss.</p>
+      </div>
+      <div>
+        <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h3M8 16h3M15 12v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <h3>Calculators</h3>
+        <p>Voltage drop for single and three phase, Ohm's law, AWG to mm², horsepower to kilowatts, °F to °C. Results as you type, and it tells you when a number can't be real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap band-grid">
+    <blockquote>It's an index, not the code.</blockquote>
+    <div class="side">
+      <p>Wirenut gets you to the right page. Your code book has the final word — and the app says so on every screen, not in a footnote.</p>
+      <p>That line is the whole design. An index that pretends to be the code is worse than no index at all, because you stop checking.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="label">Straight answers</p>
+      <h2>Before you hand over an email.</h2>
+    </div>
+    <div class="faq rv">
+      <details>
+        <summary>What do I actually get right now?</summary>
+        <p>The state-by-state edition chart as a PDF, sent once it's finished — every line carries the source it came from, so you can verify it rather than trust it. Nothing else lands in your inbox until the app ships.</p>
+      </details>
+      <details>
+        <summary>When does the app come out?</summary>
+        <p>Target is late October 2026, on iOS first. If it slips, you'll hear the new date from us before you hear silence.</p>
+      </details>
+      <details>
+        <summary>Subscription?</summary>
+        <p>No. One payment unlocks the full index, and it stays unlocked. Search and the calculators work before you pay anything.</p>
+      </details>
+      <details>
+        <summary>Does it work without signal?</summary>
+        <p>Yes. The index ships inside the app. No account, no login, nothing to load — which is the point, because service in a mechanical room is a coin flip.</p>
+      </details>
+      <details>
+        <summary>Which NEC edition is the index written against?</summary>
+        <p>NEC 2023, and every screen tells you so. That covers the largest group of states by a wide margin — but adoption is state by state, a few are still enforcing 2020, and three have moved to 2026. That's exactly what the free chart is for: knowing where you stand before you trust any index, including this one.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-mark" aria-hidden="true">Wirenut</p>
+  </div>
+  <div class="wrap foot-grid">
+    <p class="disclaimer">
+      NEC® and National Electrical Code® are registered trademarks of the National Fire Protection Association. Wirenut is an independent reference tool and is not affiliated with, endorsed by, or sponsored by the NFPA. It does not reproduce code text. Always verify against the edition adopted in your jurisdiction.
+    </p>
+    <div class="foot-links">
+      <a href="#waitlist">Waitlist</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:suleymanbudun09@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce = mq.matches;
+
+  // Reveal on scroll — with a timeout that shows everything regardless.
+  var items = document.querySelectorAll('.rv, .hit');
+  function showAll(){ items.forEach(function(el){ el.classList.add('in'); }); }
+  if (reduce || !('IntersectionObserver' in window)) { showAll(); }
+  else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:.1});
+    items.forEach(function(el){ io.observe(el); });
+    setTimeout(showAll, 2500);
+  }
+
+  // Signature: the query types itself once, on load. Final text is already in
+  // the HTML, so with JS off the demo reads correctly.
+  var q = document.getElementById('q');
+  if (q && !reduce){
+    var caret = q.querySelector('.caret');
+    var full = 'how many wires in a box';
+    var i = 0;
+    q.textContent = '';
+    if (caret) q.appendChild(caret);
+    (function step(){
+      if (i <= full.length){
+        q.firstChild && q.firstChild.nodeType === 3
+          ? (q.firstChild.nodeValue = full.slice(0,i))
+          : q.insertBefore(document.createTextNode(full.slice(0,i)), caret);
+        i++;
+        setTimeout(step, 42);
+      }
+    })();
+  }
+
+})();
+</script>
+<script async src="https://tally.so/widgets/embed.js"></script>
+</body>
+</html>
