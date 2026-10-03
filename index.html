@@ -103,6 +103,7 @@ h1 em{font-style:normal;color:var(--amber)}
 .hit{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:12px 14px;border:1px solid var(--line-soft);border-radius:10px;background:var(--raised)}
 .hit .num{font-family:var(--mono);font-weight:500;font-size:clamp(16px,4.4vw,19px);letter-spacing:-.01em;font-variant-numeric:tabular-nums;flex:none}
 .hit .txt{color:var(--dim);font-size:14px;line-height:1.45;flex:1 1 130px;min-width:0}
+.hit .txt strong{color:var(--text);font-weight:500}
 .hit .yr{margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:3px 8px;flex:none;align-self:center}
 .js .hit{opacity:0;transform:translateY(6px)}
 .js .hit.in{opacity:1;transform:none;transition:opacity .45s var(--ease),transform .45s var(--ease)}
@@ -256,13 +257,8 @@ footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px
       </div>
       <div class="demo-out">
         <div class="hit">
-          <span class="num">314.16(A)</span>
-          <span class="txt">Box fill — volume required per conductor</span>
-          <span class="yr">NEC 2023</span>
-        </div>
-        <div class="hit">
-          <span class="num">314.16(B)</span>
-          <span class="txt">What counts as a conductor: devices, clamps, grounds</span>
+          <span class="num">314.16</span>
+          <span class="txt"><strong>Box fill</strong> — Counts conductors, devices and clamps to decide the minimum volume a box needs.</span>
           <span class="yr">NEC 2023</span>
         </div>
       </div>
