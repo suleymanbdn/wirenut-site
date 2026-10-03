@@ -6,6 +6,7 @@
 <title>Privacy Policy — Wirenut</title>
 <meta name="description" content="What Wirenut collects, what it doesn't, and who it goes to. Plain English.">
 <meta name="theme-color" content="#101315">
+<meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23101315'/><path d='M9 10l3.4 12h1.6L16 14l2 8h1.6L23 10' stroke='%23E89B2C' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +14,7 @@
 <style>
 :root{
   --ink:#101315;--surface:#141719;--line:#2e3437;--line-soft:#22282a;
-  --text:#eef1f2;--dim:#8b9296;--faint:#6c7477;--amber:#e89b2c;
+  --text:#eef1f2;--dim:#8b9296;--faint:#80888c;--amber:#e89b2c;
   --display:"Space Grotesk",-apple-system,sans-serif;
   --body:"Inter",-apple-system,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
@@ -24,12 +25,12 @@ body{margin:0;background:var(--ink);color:var(--text);font-family:var(--body);fo
 a{color:var(--amber)}
 ::selection{background:var(--amber);color:var(--ink)}
 .wrap{max-width:760px;margin:0 auto;padding:0 var(--pad)}
-.label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 .nav{border-bottom:1px solid var(--line-soft)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1140px;margin:0 auto;padding:0 var(--pad)}
 .mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
 .mark b{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:17px}
-.nav a.quiet{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--dim);text-decoration:none;text-transform:uppercase}
+.nav a.quiet{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--dim);text-decoration:none;text-transform:uppercase;padding:8px 0}
 .nav a.quiet:hover{color:var(--text)}
 header.page{padding:clamp(48px,8vw,88px) 0 clamp(24px,4vw,40px)}
 h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,5vw,50px);line-height:1.05;letter-spacing:-.03em;margin:16px 0 0}
@@ -44,14 +45,24 @@ li{margin:8px 0}
 li strong{color:var(--text);font-weight:500}
 table{width:100%;border-collapse:collapse;margin:22px 0 0;font-size:14.5px}
 th,td{text-align:left;padding:12px 14px;border:1px solid var(--line-soft);vertical-align:top}
-th{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);font-weight:400;background:var(--surface)}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);font-weight:400;background:var(--surface)}
 td{color:var(--dim)}
 td:first-child{color:var(--text)}
+@media(max-width:600px){
+  table,tbody,tr{display:block}
+  thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  tr{margin:14px 0 0;border:1px solid var(--line-soft);border-radius:10px;background:var(--surface);overflow:hidden}
+  tbody tr:first-child{margin-top:0}
+  td{display:block;border:0;border-top:1px solid var(--line-soft);padding:10px 14px}
+  td:first-child{border-top:0;padding-top:14px}
+  td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+  td:first-child::before{display:none}
+}
 .callout{border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:0 12px 12px 0;background:var(--surface);padding:20px 22px;margin:26px 0 0}
 .callout p{margin:0;color:var(--text);font-size:15px}
 footer{border-top:1px solid var(--line-soft);padding:40px 0 56px}
 footer p{font-size:12.5px;color:var(--faint);line-height:1.6}
-.back{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:var(--dim)}
+.back{display:inline-block;margin-top:14px;padding:6px 0;font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:var(--dim)}
 .back:hover{color:var(--text)}
 </style>
 </head>
@@ -90,8 +101,8 @@ footer p{font-size:12.5px;color:var(--faint);line-height:1.6}
       <tr><th>Data</th><th>Linked to you</th><th>Used to track you</th><th>Why</th></tr>
     </thead>
     <tbody>
-      <tr><td>Purchase history</td><td>No</td><td>No</td><td>To know whether you have unlocked the full index, and to restore it on a new phone</td></tr>
-      <tr><td>Everything else</td><td colspan="3">Not collected — no name, no email, no location, no contacts, no usage analytics, no advertising identifier</td></tr>
+      <tr><td data-label="Data">Purchase history</td><td data-label="Linked to you">No</td><td data-label="Used to track you">No</td><td data-label="Why">To know whether you have unlocked the full index, and to restore it on a new phone</td></tr>
+      <tr><td data-label="Data">Everything else</td><td colspan="3" data-label="Details">Not collected — no name, no email, no location, no contacts, no usage analytics, no advertising identifier</td></tr>
     </tbody>
   </table>
 
