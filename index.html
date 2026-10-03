@@ -64,6 +64,14 @@ a{color:inherit}
   transition:color .2s var(--ease);
 }
 .nav a.quiet:hover{color:var(--text)}
+.nav-r{display:flex;align-items:center;gap:clamp(14px,3vw,22px)}
+.nav a.nav-cta{
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;color:var(--amber);border:1px solid var(--amber);border-radius:8px;
+  padding:6px 12px;white-space:nowrap;transition:background .2s var(--ease),color .2s var(--ease);
+}
+@media(max-width:359px){.nav a.quiet{display:none}}
+.nav a.nav-cta:hover{background:var(--amber);color:var(--ink)}
 
 /* ---------- hero ---------- */
 .hero{padding:clamp(56px,10vw,120px) 0 clamp(40px,7vw,80px);position:relative;overflow:hidden}
@@ -109,6 +117,7 @@ h1 em{font-style:normal;color:var(--amber)}
 .js .hit.in{opacity:1;transform:none;transition:opacity .45s var(--ease),transform .45s var(--ease)}
 
 /* ---------- signup card ---------- */
+#waitlist{scroll-margin-top:84px}
 .card{
   border:1px solid var(--line);border-radius:16px;background:var(--surface);
   padding:clamp(22px,3.4vw,32px);position:relative;
@@ -119,6 +128,7 @@ h1 em{font-style:normal;color:var(--amber)}
 }
 .card h2{font-family:var(--display);font-weight:700;font-size:clamp(21px,2.6vw,26px);line-height:1.2;letter-spacing:-.02em;margin:14px 0 0}
 .card p{color:var(--dim);font-size:15px;margin:12px 0 0}
+.card .label{font-size:12px;color:var(--amber)}
 .chart-rows{margin:22px 0 0;border-top:1px solid var(--line-soft)}
 .chart-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
 .chart-row .st{font-family:var(--mono);font-size:12px;color:var(--dim);width:98px;flex:none;letter-spacing:.02em}
@@ -186,6 +196,8 @@ summary::after{
 }
 details[open] summary::after{transform:rotate(225deg) translateY(-2px)}
 details p{color:var(--dim);margin:0 0 20px;font-size:15px;max-width:64ch}
+.again{margin:28px 0 0;color:var(--dim);font-size:15px}
+.again a{color:var(--amber);display:inline-block;padding:4px 0;text-underline-offset:3px}
 
 /* footer */
 footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px;overflow:hidden}
@@ -219,7 +231,10 @@ footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px
       <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#181c1e"/><path d="M9 10l3.4 12h1.6L16 14l2 8h1.6L23 10" stroke="#E89B2C" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <b>Wirenut</b>
     </a>
-    <a class="quiet" href="privacy.html">Privacy</a>
+    <div class="nav-r">
+      <a class="nav-cta" href="#waitlist">Get the chart</a>
+      <a class="quiet" href="privacy.html">Privacy</a>
+    </div>
   </div>
 </nav>
 
@@ -232,15 +247,15 @@ footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px
     </div>
 
     <div class="card" id="waitlist">
-      <p class="label">Free — sent when it's ready</p>
+      <p class="label">iOS · October 2026 launch list</p>
       <h2>NEC edition by state, 2026</h2>
       <p>One page. Which edition your state actually enforces right now, when it took effect, and a source link for every line — so you can check it yourself.</p>
 
       <div class="cta">
-        <button type="button" data-tally-open="D48BQ5" data-tally-layout="modal" data-tally-width="460" data-tally-emoji-text="⚡" data-tally-emoji-animation="none">Send me the chart</button>
-        <noscript><a class="cta-link" href="https://tally.so/r/D48BQ5">Send me the chart →</a></noscript>
+        <button type="button" data-tally-open="D48BQ5" data-tally-layout="modal" data-tally-width="460" data-tally-emoji-text="⚡" data-tally-emoji-animation="none">Get the chart + launch alert</button>
+        <noscript><a class="cta-link" href="https://tally.so/r/D48BQ5">Get the chart + launch alert</a></noscript>
       </div>
-      <p class="fineprint">You'll also be first to know when Wirenut ships on iOS. Two emails, maybe three. Unsubscribe in one click.</p>
+      <p class="fineprint">The chart is free and arrives when it's ready. The launch alert is for when Wirenut ships on iOS. Two emails, maybe three. Unsubscribe in one click.</p>
 
       <p>Most charts online are copies of one stale list. Texas moved to the 2026 code on September 1; every roundup we found still has it on 2023.</p>
 
@@ -333,6 +348,7 @@ footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px
         <p>NEC 2023, and every screen tells you so. That covers the largest group of states by a wide margin — but adoption is state by state, a few are still enforcing 2020, and three have moved to 2026. That's exactly what the free chart is for: knowing where you stand before you trust any index, including this one.</p>
       </details>
     </div>
+    <p class="again">Still thinking it over? <a href="#waitlist">Get the chart + launch alert →</a></p>
   </div>
 </section>
 
