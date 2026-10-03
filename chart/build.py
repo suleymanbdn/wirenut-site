@@ -6,6 +6,8 @@
 
 Python standard library only. The PDF is printed by Brave in headless mode (through its DevTools port).
 Every state fact comes from the JSON file; nothing about a state is typed here.
+The JSON holds only the fields printed in the PDF (plus code); the full review data
+stays outside this public repo.
 """
 import argparse
 import base64
