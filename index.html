@@ -129,12 +129,15 @@ h1 em{font-style:normal;color:var(--amber)}
 .card h2{font-family:var(--display);font-weight:700;font-size:clamp(21px,2.6vw,26px);line-height:1.2;letter-spacing:-.02em;margin:14px 0 0}
 .card p{color:var(--dim);font-size:15px;margin:12px 0 0}
 .card .label{font-size:12px;color:var(--amber)}
-.chart-rows{margin:22px 0 0;border-top:1px solid var(--line-soft)}
-.chart-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
-.chart-row .st{font-family:var(--mono);font-size:12px;color:var(--dim);width:98px;flex:none;letter-spacing:.02em}
-@media(max-width:380px){.chart-row .bar{display:none}}
-.chart-row .ed{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;color:var(--text)}
-.chart-row .bar{margin-left:auto;height:3px;border-radius:2px;background:var(--line);flex:none}
+.chart-rows{margin:22px 0 0}
+.chart-note{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);padding-bottom:10px}
+.chart-row{display:grid;grid-template-columns:98px 64px minmax(0,1fr);gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line-soft);font-size:14px}
+.chart-row:last-child{border-bottom:1px solid var(--line-soft)}
+.chart-row .st{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.02em;white-space:nowrap}
+.chart-row .ed{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap}
+.chart-row .dt{font-family:var(--mono);font-size:12px;color:var(--dim);text-align:right;white-space:nowrap}
+.chart-head{padding:0 0 8px;border-top:0}
+.chart-row.chart-head span{color:var(--faint);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .cta{margin:24px 0 0}
 .cta button,.cta-link{
   display:block;width:100%;text-align:center;
@@ -257,12 +260,14 @@ footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px
       </div>
       <p class="fineprint">The chart is free and arrives when it's ready. The launch alert is for when Wirenut ships on iOS. Two emails, maybe three. Unsubscribe in one click.</p>
 
-      <p>Most charts online are copies of one stale list. Texas moved to the 2026 code on September 1; every roundup we found still has it on 2023.</p>
+      <p>Most charts online are copies of one stale list. Texas moved to the 2026 code on September 1, 2026; none of the six roundups we checked on September 5, 2026 had caught it.</p>
 
       <div class="chart-rows" aria-hidden="true">
-        <div class="chart-row"><span class="st">Texas</span><span class="ed">NEC 2026</span><span class="bar" style="width:56px;background:#e89b2c"></span></div>
-        <div class="chart-row"><span class="st">Pennsylvania</span><span class="ed">NEC 2020</span><span class="bar" style="width:30px"></span></div>
-        <div class="chart-row"><span class="st">Arizona</span><span class="ed">local adoption</span><span class="bar" style="width:18px"></span></div>
+        <div class="chart-note">Preview · as of Sept 5, 2026</div>
+        <div class="chart-row chart-head"><span class="st">State</span><span class="ed">Edition</span><span class="dt">Since</span></div>
+        <div class="chart-row"><span class="st">Colorado</span><span class="ed">NEC 2026</span><span class="dt">Aug 1, 2026</span></div>
+        <div class="chart-row"><span class="st">Massachusetts</span><span class="ed">NEC 2026</span><span class="dt">Apr 24, 2026</span></div>
+        <div class="chart-row"><span class="st">New Hampshire</span><span class="ed">NEC 2023</span><span class="dt">Jul 1, 2025</span></div>
       </div>
     </div>
 
@@ -345,7 +350,7 @@ footer{border-top:1px solid var(--line-soft);padding:clamp(40px,6vw,64px) 0 48px
       </details>
       <details>
         <summary>Which NEC edition is the index written against?</summary>
-        <p>The app carries two editions, NEC 2023 and NEC 2026, and opens on 2023; you switch in the About screen. The lookup screen names the edition at the top, and Code Hunt repeats it after each prompt. Adoption is state by state — a few states are still enforcing 2020, which the index doesn't cover, and three have moved to 2026. That's exactly what the free chart is for: knowing where you stand before you trust any index, including this one.</p>
+        <p>The app carries two editions, NEC 2023 and NEC 2026, and opens on 2023; you switch in the About screen. The lookup screen names the edition at the top, and Code Hunt repeats it after each prompt. Adoption is state by state. As of September 5, 2026, across the 50 states and D.C., we could confirm 26 on 2023, 6 still on 2020 (which the index doesn't cover) and 3 on 2026; the other 16 we couldn't confirm yet. That's exactly what the free chart is for: knowing where you stand before you trust any index, including this one.</p>
       </details>
     </div>
     <p class="again">Still thinking it over? <a href="#waitlist">Get the chart + launch alert →</a></p>
