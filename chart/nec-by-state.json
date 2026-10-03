@@ -1,0 +1,733 @@
+[
+  {
+    "state": "Alabama",
+    "code": "AL",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2022-04-14",
+    "statewide": false,
+    "adopted_next": null,
+    "source_urls": [
+      "https://admincode.legislature.state.al.us/api/chapter/355-12-1"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed",
+    "pdf_note": "NEC 2020 applies to state-funded buildings only; other work follows the local edition."
+  },
+  {
+    "state": "Alaska",
+    "code": "AK",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2020-04-16",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Arizona",
+    "code": "AZ",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": null,
+    "statewide": false,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree",
+    "pdf_note": "No statewide code; cities and counties adopt their own edition."
+  },
+  {
+    "state": "Arkansas",
+    "code": "AR",
+    "edition_in_effect": null,
+    "effective_date": null,
+    "statewide": true,
+    "adopted_next": {
+      "edition": "NEC 2023",
+      "effective_date": null
+    },
+    "source_urls": [
+      "https://labor.arkansas.gov/wp-content/uploads/2023-NEC-Adoption-rule-Electrical-clean-Copy.pdf",
+      "https://labor.arkansas.gov/wp-content/uploads/2023-NEC-Rule-Summary.pdf",
+      "https://labor.arkansas.gov/wp-content/uploads/Public-Notice-Electrical-2024.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "unresolved",
+    "pdf_note": "A rule adopting NEC 2023 went to public hearing in 2024; no effective date found."
+  },
+  {
+    "state": "California",
+    "code": "CA",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2026-01-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.dgs.ca.gov/BSC/Resources/2025-Title-24-California-Code-Changes",
+      "https://www.dgs.ca.gov/BSC/Codes"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Colorado",
+    "code": "CO",
+    "edition_in_effect": "NEC 2026",
+    "effective_date": "2026-08-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Community-Planning-and-Development/CPD-News-and-Events/CPD-News/2026/New-electric-standards-to-be-effective-Aug.-1",
+      "https://dpo.colorado.gov/Electrical"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Connecticut",
+    "code": "CT",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2022-10-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Delaware",
+    "code": "DE",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2026-01-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "District of Columbia",
+    "code": "DC",
+    "edition_in_effect": "NEC 2014",
+    "effective_date": "2020-05-29",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://dob.dc.gov/node/1613981",
+      "https://dob.dc.gov/node/1615636"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Florida",
+    "code": "FL",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2023-12-31",
+    "statewide": true,
+    "adopted_next": {
+      "edition": "NEC 2023",
+      "effective_date": "2026-12-31"
+    },
+    "source_urls": [
+      "https://www.floridabuilding.org/fbc/commission/FBC_0726/Commission/2026_FBC_Workplan_August_2026.pdf",
+      "https://www.floridabuilding.org/fbc/commission/FBC_0626/Commission/FBC-Updated-Commission-Milestones_14-April-2026.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed",
+    "pdf_note": "Dec 31, 2026 is the planned date for NEC 2023; the final rule hearing is still pending."
+  },
+  {
+    "state": "Georgia",
+    "code": "GA",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-01-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Hawaii",
+    "code": "HI",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2024-09-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Idaho",
+    "code": "ID",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-01-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://legislature.idaho.gov/wp-content/uploads/sessioninfo/2024/legislation/H0704.pdf",
+      "https://admws.idaho.gov/pipermail/dopl-communication/2024-June/000028.html",
+      "https://legislature.idaho.gov/statutesrules/idstat/title54/t54ch10/sect54-1001/",
+      "https://adminrules.idaho.gov/rules/current/24/243910.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "official-unopened"
+  },
+  {
+    "state": "Illinois",
+    "code": "IL",
+    "edition_in_effect": null,
+    "effective_date": null,
+    "statewide": false,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/",
+      "https://faradaycrew.com/resources/nec-adoption-by-state"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "unresolved",
+    "pdf_note": "No statewide code found; cities and counties adopt their own."
+  },
+  {
+    "state": "Indiana",
+    "code": "IN",
+    "edition_in_effect": "NEC 2008",
+    "effective_date": "2026-01-01",
+    "statewide": true,
+    "adopted_next": {
+      "edition": "NEC 2023",
+      "effective_date": null
+    },
+    "source_urls": [
+      "https://iar.iga.in.gov/register/20260311-IR-675260062RAA",
+      "https://iar.iga.in.gov/register/20250903-IR-675240566RAA",
+      "https://www.iabo.com/Current-Code"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "unresolved",
+    "pdf_note": "The older state code (2008 NEC base) appears to still apply; a 2023 NEC update was proposed in March 2026 with no final date found."
+  },
+  {
+    "state": "Iowa",
+    "code": "IA",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-07-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Kansas",
+    "code": "KS",
+    "edition_in_effect": null,
+    "effective_date": null,
+    "statewide": false,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.firemarshal.ks.gov/DocumentCenter/View/126/KAR-22-1---Kansas-Fire-Prevention-Code-PDF",
+      "https://firemarshal.ks.gov/181/Code-Listing"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "unresolved",
+    "pdf_note": "No statewide installation code found; cities and counties adopt their own."
+  },
+  {
+    "state": "Kentucky",
+    "code": "KY",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-01-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Louisiana",
+    "code": "LA",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2023-01-01",
+    "statewide": true,
+    "adopted_next": {
+      "edition": "NEC 2023",
+      "effective_date": null
+    },
+    "source_urls": [
+      "https://lsuccc.la/wp-content/uploads/2025/11/LSUCCC_Louisiana-Construction-Code-Information.pdf",
+      "https://lsuccc.la/2023-nec-2024-i-code-adoption-proposed-language-2/"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Maine",
+    "code": "ME",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2024-07-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Maryland",
+    "code": "MD",
+    "edition_in_effect": "NEC 2017",
+    "effective_date": null,
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://labor.maryland.gov/labor/build/buildcodematrix.pdf",
+      "https://labor.maryland.gov/labor/build/buildmech.shtml",
+      "https://labor.maryland.gov/license/min/elec-june2026.shtml"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed",
+    "pdf_note": "State minimum; counties and cities often adopt a newer edition."
+  },
+  {
+    "state": "Massachusetts",
+    "code": "MA",
+    "edition_in_effect": "NEC 2026",
+    "effective_date": "2026-04-24",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.mass.gov/doc/527-cmr-1200-massachusetts-electrical-code-effective-42426/download",
+      "https://www.mass.gov/info-details/massachusetts-electrical-code"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Michigan",
+    "code": "MI",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2024-03-12",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Minnesota",
+    "code": "MN",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2023-07-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Mississippi",
+    "code": "MS",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-01-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Missouri",
+    "code": "MO",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": null,
+    "statewide": false,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree",
+    "pdf_note": "No statewide code; cities and counties adopt their own edition."
+  },
+  {
+    "state": "Montana",
+    "code": "MT",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2022-06-10",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Nebraska",
+    "code": "NE",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2024-08-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Nevada",
+    "code": "NV",
+    "edition_in_effect": null,
+    "effective_date": null,
+    "statewide": false,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.leg.state.nv.us/nrs/nrs-278.html",
+      "https://www.leg.state.nv.us/NRS/NRS-624.html"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "official-unopened",
+    "pdf_note": "No statewide edition; each city or county uses the edition it last approved."
+  },
+  {
+    "state": "New Hampshire",
+    "code": "NH",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-07-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.firemarshal.dos.nh.gov/laws-rules-regulatory/state-building-code",
+      "https://nhboa.net/state-building-code-change-2026/"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "New Jersey",
+    "code": "NJ",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2026-08-17",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.nj.gov/dca/codes/codreg/current.shtml",
+      "https://www.nj.gov/dca/codes/codreg/pdf_rule_adoptions/model_codes_2024_adopt.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed",
+    "pdf_note": "A six-month grace period may let earlier applications use NEC 2020."
+  },
+  {
+    "state": "New Mexico",
+    "code": "NM",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2023-03-28",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.srca.nm.gov/parts/title14/14.010.0004.html"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "New York",
+    "code": "NY",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-12-31",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://dos.ny.gov/system/files/documents/2025/07/2025bcnys_noa_2025-07-24_compressed.pdf",
+      "https://dos.ny.gov/notice-adoption"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed",
+    "pdf_note": "New York City uses its own electrical code."
+  },
+  {
+    "state": "North Carolina",
+    "code": "NC",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2021-11-01",
+    "statewide": true,
+    "adopted_next": {
+      "edition": "NEC 2023",
+      "effective_date": null
+    },
+    "source_urls": [
+      "https://www.ncosfm.gov/codes/state-electrical-division/state-electrical-code-and-interpretations"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed",
+    "pdf_note": "Excludes one- and two-family dwellings. The 2023 code was adopted but is on indefinite delay."
+  },
+  {
+    "state": "North Dakota",
+    "code": "ND",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2024-07-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Ohio",
+    "code": "OH",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2024-03-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/2024%20OBC%20Executive%20Summary%201.pdf",
+      "https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/2024%20Ohio%20Building%20Code%20Rules%20Effective%20March%201,%202024.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Oklahoma",
+    "code": "OK",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2024-09-14",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Oregon",
+    "code": "OR",
+    "edition_in_effect": "NEC 2026",
+    "effective_date": "2026-10-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.oregon.gov/bcd/codes-stand/pages/oesc-adoption.aspx",
+      "https://www.oregon.gov/bcd/codes-stand/Documents/26oesc-table1-E.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Pennsylvania",
+    "code": "PA",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2026-01-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.pacodeandbulletin.gov/Display/pacode?file=%2Fsecure%2Fpacode%2Fdata%2F034%2Fchapter403%2Fs403.21.html",
+      "https://pacodeandbulletin.gov/Display/pabull?file=/secure/pabulletin/data/vol55/55-45/1513.html"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed",
+    "pdf_note": "Adopted by reference through the 2021 International codes (UCC)."
+  },
+  {
+    "state": "Rhode Island",
+    "code": "RI",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-12-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "South Carolina",
+    "code": "SC",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2023-01-01",
+    "statewide": true,
+    "adopted_next": {
+      "edition": "NEC 2023",
+      "effective_date": "2027-01-01"
+    },
+    "source_urls": [
+      "https://llr.sc.gov/bcc/BCAdoption.aspx",
+      "https://www.llr.sc.gov/bcc/pdffiles/SC-Code-Adoption-Notice.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "official-unopened"
+  },
+  {
+    "state": "South Dakota",
+    "code": "SD",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2024-11-12",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Tennessee",
+    "code": "TN",
+    "edition_in_effect": "NEC 2017",
+    "effective_date": null,
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.tn.gov/commerce/fire/codes-enforcement/history.html",
+      "https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-01.20250714.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed",
+    "pdf_note": "Effective date differs between state sources."
+  },
+  {
+    "state": "Texas",
+    "code": "TX",
+    "edition_in_effect": "NEC 2026",
+    "effective_date": "2026-09-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://www.tdlr.texas.gov/news/rulemaking/2026/09/01/commission-adopts-rules-12/",
+      "https://www.mckinneytexas.org/DocumentCenter/View/39888/2026-National-Electrical-Code-Significant-Changes",
+      "https://iecfwtc.org/texas-adopts-the-2026-nec-effective-september-1-2026/"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Utah",
+    "code": "UT",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": null,
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://le.utah.gov/xcode/Title15A/Chapter2/C15A-2-S103_2026050620260701.html"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "official-unopened"
+  },
+  {
+    "state": "Vermont",
+    "code": "VT",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2025-11-04",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://firesafety.vermont.gov/sites/firesafety/files/Rules/2025%20Vermont%20Electrical%20Safety%20Rules.pdf"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "confirmed"
+  },
+  {
+    "state": "Virginia",
+    "code": "VA",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2024-01-18",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  },
+  {
+    "state": "Washington",
+    "code": "WA",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": null,
+    "statewide": true,
+    "adopted_next": {
+      "edition": "NEC 2026",
+      "effective_date": "2026-12-31"
+    },
+    "source_urls": [
+      "https://app.leg.wa.gov/wac/default.aspx?cite=296-46B-010",
+      "https://www.lni.wa.gov/rulemaking-activity/AO25-08/2508CES.pdf"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "West Virginia",
+    "code": "WV",
+    "edition_in_effect": "NEC 2020",
+    "effective_date": "2022-08-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://firemarshal.wv.gov/media/39311/download?inline=",
+      "https://firemarshal.wv.gov/regulatory-and-licensing-division"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "confirmed"
+  },
+  {
+    "state": "Wisconsin",
+    "code": "WI",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2026-09-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://dsps.wi.gov/Documents/NewsMedia/20260601Electrical_and_PlumbingCodeUpdatesNewsRelease.pdf",
+      "https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/301_319/316/i/005",
+      "https://docs.legis.wisconsin.gov/ruletext/CR%2026-016"
+    ],
+    "verified_on": "2026-10-03",
+    "status": "official-unopened"
+  },
+  {
+    "state": "Wyoming",
+    "code": "WY",
+    "edition_in_effect": "NEC 2023",
+    "effective_date": "2023-07-01",
+    "statewide": true,
+    "adopted_next": null,
+    "source_urls": [
+      "https://electricaltoolbox.com/nec-adoption/"
+    ],
+    "verified_on": "2026-09-05",
+    "status": "two-roundups-agree"
+  }
+]
