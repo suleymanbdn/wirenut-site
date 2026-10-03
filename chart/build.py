@@ -35,22 +35,24 @@ SITE = "https://suleymanbdn.github.io/wirenut-site/"
 CONFIDENCE = {
     "confirmed": (
         "State source",
-        "Confirmed against an official or public-agency source.",
+        "We read the state’s own rule or an official public-agency page.",
         "#2f7d4f",
     ),
     "official-unopened": (
-        "State page (summary only)",
-        "An official state page names the edition, but we did not read the rule text behind it.",
+        "State source (indirect)",
+        "We found the state’s official page but could only read it through a search summary "
+        "— likely right, not yet confirmed.",
         "#2b6f8a",
     ),
     "two-roundups-agree": (
         "Two roundups agree",
-        "Two commercial roundups list the same edition. Likely, but not confirmed against an official source.",
+        "Two commercial adoption lists agreed when we checked; not yet confirmed against the "
+        "state’s own rule. The link goes to the list the date came from.",
         "#c98322",
     ),
     "unresolved": (
         "Unresolved",
-        "We could not pin it down, so the row says so instead of guessing.",
+        "We could not pin it down. We never guess — ask your AHJ.",
         "#b23b3b",
     ),
 }
@@ -62,7 +64,7 @@ MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 MONTHS_LONG = ("January", "February", "March", "April", "May", "June", "July",
                "August", "September", "October", "November", "December")
-NOT_CONFIRMED = "Not confirmed — check with your state"
+NOT_CONFIRMED = "Not confirmed — check with your AHJ"
 
 esc = html.escape
 
@@ -159,8 +161,13 @@ def summary(rows):
     return tiles
 
 
+def has_next(r):
+    """A newer edition counts only when it is adopted or approved, never for unresolved rows."""
+    return bool(r["adopted_next"]) and r["status"] != "unresolved"
+
+
 def changing_soon(rows):
-    items = [r for r in rows if r["adopted_next"]]
+    items = [r for r in rows if has_next(r)]
 
     def key(r):
         d = r["adopted_next"].get("effective_date")
@@ -192,6 +199,13 @@ def next_text(r):
     return "Next: %s · %s" % (n["edition"], when)
 
 
+def label_html(label, colour):
+    """Dot + label kept on one line; a trailing '(...)' may drop to the next line."""
+    head, sep, tail = label.partition(" (")
+    return ('<span class="lb"><span class="dot" style="background:%s"></span>%s</span>%s'
+            % (colour, esc(head), " (" + esc(tail) if sep else ""))
+
+
 def row_html(r):
     kind = classify(r)
     label, _, colour = CONFIDENCE[r["status"]]
@@ -207,7 +221,7 @@ def row_html(r):
         since = '<td class="dt mono">%s</td>' % esc(short_date(r["effective_date"]))
         if r["statewide"] is None:
             subs.append("statewide status disputed")
-    if r["adopted_next"]:
+    if has_next(r):
         subs.append(next_text(r))
     sub_html = "".join('<div class="sub">%s</div>' % esc(s) for s in subs)
     out = [
@@ -215,8 +229,8 @@ def row_html(r):
         '<th scope="row" class="st">%s</th>' % esc(r["state"]),
         main + sub_html + "</td>",
         since,
-        '<td class="cf"><span class="dot" style="background:%s"></span>%s</td>'
-        % (colour, esc(label)),
+        '<td class="cf">%s<div class="sub">checked %s</div></td>'
+        % (label_html(label, colour), esc(short_date(r["verified_on"]))),
         '<td class="src">%s</td></tr>' % source_cell(r),
     ]
     if r.get("pdf_note"):
@@ -242,9 +256,9 @@ def soon_html(rows):
             % (esc(r["state"]), esc(now), esc(n["edition"]), esc(when)))
     return (
         '<section class="soon"><h2>Changing soon</h2>'
-        "<p>These states have adopted a newer edition that is not in force yet.</p>"
+        "<p>Newer editions adopted or approved but not in force yet.</p>"
         '<table><thead><tr><th>State</th><th>In effect now</th><th>Coming</th>'
-        "<th>Takes effect</th></tr></thead><tbody>%s</tbody></table></section>"
+        "<th>Expected</th></tr></thead><tbody>%s</tbody></table></section>"
         % "".join(lines))
 
 
@@ -261,7 +275,6 @@ def howto_html(rows):
                  "but disagree on whether it applies statewide.</dd>")
     return (
         '<section class="how"><h2>How to read this</h2><dl>%s</dl>'
-        "<p><strong>We never guess:</strong> unresolved rows say so.</p>"
         "<p>States amend the NEC, and cities and counties can adopt differently. Your AHJ "
         "(authority having jurisdiction) has the final say. Not legal advice.</p></section>"
         % defs)
@@ -288,7 +301,7 @@ CSS = """
 @font-face{font-family:"Space Grotesk";font-style:normal;font-weight:500 700;src:url(../fonts/space-grotesk-latin.woff2) format("woff2")}
 @font-face{font-family:"Inter";font-style:normal;font-weight:400 500;src:url(../fonts/inter-latin.woff2) format("woff2")}
 @font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:400 500;src:url(../fonts/jetbrains-mono-latin.woff2) format("woff2")}
-@page{size:Letter;margin:.5in .5in .65in;
+@page{size:Letter;margin:.45in .5in .6in;
   @bottom-left{content:"Wirenut \u00b7 NEC edition by state";font:400 9pt Inter,sans-serif;color:#5a6368}
   @bottom-right{content:"Page " counter(page) " of " counter(pages);font:400 9pt Inter,sans-serif;color:#5a6368}}
 :root{--ink:#14181a;--dim:#5a6368;--line:#d9dde0;--band:#f5f6f7;--amber:#e89b2c;--amber-ink:#8a4f00;--tint:#fff6e5}
@@ -300,18 +313,18 @@ a{color:var(--amber-ink);text-decoration:underline;text-decoration-thickness:.5p
 .top{display:flex;justify-content:space-between;align-items:baseline;border-top:3pt solid var(--amber);padding-top:7pt}
 .brand{font:700 13pt "Space Grotesk",sans-serif;letter-spacing:-.01em}
 .url{font:400 9.5pt "JetBrains Mono",monospace}
-h1{font:700 31pt/1.05 "Space Grotesk",sans-serif;letter-spacing:-.025em;margin:16pt 0 6pt}
+h1{font:700 31pt/1.05 "Space Grotesk",sans-serif;letter-spacing:-.025em;margin:12pt 0 5pt}
 .lede{margin:0;font-size:11.5pt;color:var(--dim)}
-.tiles{display:flex;gap:7pt;margin:16pt 0 7pt}
+.tiles{display:flex;gap:7pt;margin:12pt 0 6pt}
 .tile{flex:1;border:.75pt solid var(--line);border-radius:4pt;padding:7pt 8pt 6pt}
 .tile b{display:block;font:700 22pt/1 "Space Grotesk",sans-serif;letter-spacing:-.02em}
 .tile span{display:block;margin-top:3pt;font-size:9pt;line-height:1.25;color:var(--dim)}
-.cfl{margin:0 0 14pt;font-size:9.5pt;color:var(--dim)}
+.cfl{margin:0 0 11pt;font-size:9.5pt;color:var(--dim)}
 .cfi{display:inline-block;margin-right:12pt;white-space:nowrap}
 .cfi b{font-weight:500;color:var(--ink)}
 .dot{display:inline-block;width:6pt;height:6pt;border-radius:50%;margin-right:5pt;vertical-align:.5pt}
 h2{font:700 14pt/1.2 "Space Grotesk",sans-serif;letter-spacing:-.015em;margin:0 0 3pt}
-.soon{background:var(--tint);border-left:3pt solid var(--amber);border-radius:0 4pt 4pt 0;padding:9pt 12pt 8pt;margin:0 0 16pt;break-inside:avoid}
+.soon{background:var(--tint);border-left:3pt solid var(--amber);border-radius:0 4pt 4pt 0;padding:8pt 12pt 7pt;margin:0 0 12pt;break-inside:avoid}
 .soon p{margin:0 0 6pt;font-size:10pt;color:var(--dim)}
 .soon table{width:100%;border-collapse:collapse;font-size:10pt}
 .soon th,.soon td{text-align:left;padding:2.5pt 8pt 2.5pt 0;font-weight:400}
@@ -319,31 +332,33 @@ h2{font:700 14pt/1.2 "Space Grotesk",sans-serif;letter-spacing:-.015em;margin:0 
 .soon tbody th{font-weight:500}
 .soon tbody tr+tr>*{border-top:.5pt solid #efdcb4}
 .listh{margin:0 0 6pt}
-table.main{width:100%;border-collapse:collapse;table-layout:fixed;font-size:10pt}
+table.main{width:100%;border-collapse:collapse;table-layout:fixed;font-size:10pt;line-height:1.28}
 table.main thead{display:table-header-group}
 table.main thead th{font:500 9pt "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.02em;color:var(--dim);text-align:left;padding:0 6pt 5pt 0;border-bottom:1.25pt solid var(--ink)}
-table.main td,table.main th.st{padding:3.2pt 4pt 3.2pt 0;vertical-align:top;text-align:left;border-bottom:.5pt solid var(--line)}
+table.main td,table.main th.st{padding:2.2pt 4pt 2.2pt 0;vertical-align:top;text-align:left;border-bottom:.5pt solid var(--line)}
 table.main tbody.s{break-inside:avoid}
 table.main tbody.s:nth-of-type(even)>tr>*{background:var(--band)}
 table.main tbody.s>tr>*:first-child{padding-left:3pt}
 .st{font-weight:500;font-size:9.5pt}
 .ed{font-size:10pt}
 .ed.muted,.muted{color:var(--dim)}
-.sub{font-size:9pt;color:var(--dim);line-height:1.3}
+.sub{font-size:9pt;color:var(--dim);line-height:1.25}
 .dt{font-size:9pt;white-space:nowrap}
-.cf{font-size:9.5pt;white-space:nowrap}
-table.main td.cf{padding-left:4pt}
+.cf{font-size:9pt}
+.lb{white-space:nowrap}
+.cf .sub{padding-left:11pt;white-space:nowrap}
+table.main td.cf{padding-left:3pt}
 .src{font-size:9pt;overflow-wrap:anywhere}
 .src a{margin-right:7pt;white-space:nowrap}
 tr.pn td{font-size:9pt;color:var(--dim);padding:0 6pt 4pt 3pt;border-bottom:.5pt solid var(--line);font-style:normal}
 tbody.s>tr:has(+tr.pn)>*{border-bottom:0}
-.how{margin-top:14pt;break-inside:avoid;border-top:1.25pt solid var(--ink);padding-top:10pt}
-.how h2{margin-bottom:6pt}
-.how dl{margin:0 0 8pt;display:grid;grid-template-columns:150pt 1fr;gap:4pt 12pt}
+.how{margin-top:10pt;break-inside:avoid;border-top:1.25pt solid var(--ink);padding-top:8pt}
+.how h2{margin-bottom:5pt}
+.how dl{margin:0 0 6pt;display:grid;grid-template-columns:125pt 1fr;gap:3pt 10pt}
 .how dt{font-weight:500;font-size:10pt}
 .how dd{margin:0;font-size:10pt;color:var(--dim)}
-.how p{margin:0 0 5pt;font-size:10pt}
-.about{margin-top:12pt;padding-top:8pt;border-top:.5pt solid var(--line);font-size:9.5pt;color:var(--dim);break-inside:avoid}
+.how p{margin:0 0 4pt;font-size:10pt}
+.about{margin-top:8pt;padding-top:6pt;border-top:.5pt solid var(--line);font-size:9.5pt;color:var(--dim);break-inside:avoid}
 .about p{margin:0 0 4pt}
 .about .tm{font-size:9pt}
 """
@@ -361,11 +376,11 @@ def build_html(rows):
 <style>%(css)s</style></head><body>
 <header><div class="top"><span class="brand">Wirenut</span><a class="url" href="%(site)s">%(site)s</a></div>
 <h1>NEC edition by state</h1>
-<p class="lede">Which National Electrical Code edition each state enforces — as of %(as_of)s</p></header>
+<p class="lede">Which National Electrical Code edition each state enforces. Updated %(as_of)s — each row shows when we last checked it.</p></header>
 <div class="tiles">%(tiles)s</div>
 <p class="cfl">%(scope)s \u00b7 %(conf)s</p>
 %(soon)s
-<table class="main"><colgroup><col style="width:13.5%%"><col style="width:25.5%%"><col style="width:13%%"><col style="width:20.5%%"><col style="width:27.5%%"></colgroup>
+<table class="main"><colgroup><col style="width:15%%"><col style="width:25.5%%"><col style="width:13%%"><col style="width:20.5%%"><col style="width:26%%"></colgroup>
 <thead><tr><th>State</th><th>Edition in effect</th><th>Since</th><th>Source confidence</th><th>Source</th></tr></thead>
 %(body)s</table>
 %(how)s
